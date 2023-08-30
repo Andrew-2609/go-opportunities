@@ -1,1 +1,1 @@
-# Go Opportunities API
+# Go Opportunités API
