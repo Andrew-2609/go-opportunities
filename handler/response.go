@@ -2,6 +2,7 @@ package handler
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -15,9 +16,20 @@ func sendError(ctx *gin.Context, code int, msg string) {
 	})
 }
 
-func sendSuccess(ctx *gin.Context, code int, op string, data any) {
-	ctx.JSON(code, gin.H{
+func sendOK(ctx *gin.Context, op string, data any) {
+	ctx.JSON(http.StatusOK, gin.H{
 		"message": fmt.Sprintf("Operation %s was successfull!", op),
 		"data":    data,
 	})
+}
+
+func sendCreated(ctx *gin.Context, op string, data any) {
+	ctx.JSON(http.StatusCreated, gin.H{
+		"message": fmt.Sprintf("Operation %s was successfull!", op),
+		"data":    data,
+	})
+}
+
+func sendNoContent(ctx *gin.Context) {
+	ctx.JSON(http.StatusNoContent, nil)
 }
