@@ -1,4 +1,83 @@
+definitions:
+  handler.CreateOpeningRequest:
+    properties:
+      company:
+        type: string
+      link:
+        type: string
+      location:
+        type: string
+      role:
+        type: string
+      salary:
+        type: integer
+      workModel:
+        type: string
+    type: object
+  handler.CreateOpeningResponse:
+    properties:
+      company:
+        type: string
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      link:
+        type: string
+      location:
+        type: string
+      role:
+        type: string
+      salary:
+        type: integer
+      updatedAt:
+        type: string
+      workModel:
+        type: string
+    type: object
+  handler.ErrorResponse:
+    properties:
+      error:
+        properties:
+          code:
+            type: integer
+          message:
+            type: string
+        type: object
+    type: object
 info:
   contact: {}
-paths: {}
+paths:
+  /openings:
+    post:
+      consumes:
+      - application/json
+      description: Create a new job opening
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.CreateOpeningRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.CreateOpeningResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Create Opening
+      tags:
+      - Openings
 swagger: "2.0"
