@@ -42,3 +42,20 @@ func (c *CreateOpeningRequest) Validate() error {
 func validateAttribute(attrName string) error {
 	return fmt.Errorf("Param '%s' is required!", attrName)
 }
+
+type UpdateOpeningRequest struct {
+	Role      string `json:"role"`
+	Company   string `json:"company"`
+	Location  string `json:"location"`
+	WorkModel string `json:"workModel"`
+	Link      string `json:"link"`
+	Salary    int64  `json:"salary"`
+}
+
+func (u *UpdateOpeningRequest) Validate() error {
+	if u.Role != "" || u.Company != "" || u.Location != "" || u.WorkModel != "" || u.Link != "" || u.Salary > 0 {
+		return nil
+	}
+
+	return fmt.Errorf("At least one valid field must be provided")
+}
