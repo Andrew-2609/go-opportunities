@@ -38,3 +38,7 @@ type ErrorResponse struct {
 type CreateOpeningResponse struct {
 	schema.OpeningResponse
 }
+
+type UpdateOpeningResponse struct {
+	schema.OpeningResponse
+}
