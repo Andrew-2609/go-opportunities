@@ -7,6 +7,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @Summary Get Openings
+// @Description Get an array of job openings
+// @Tags Openings
+// @Produce json
+// @Success 200 {array} schema.OpeningResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /openings [get]
 func GetOpeningsHandler(ctx *gin.Context) {
 	openings := []schema.Opening{}
 
